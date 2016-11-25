@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,22 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import dao.ClasificacionDao;
-import dao.DisposicionDao;
-import entity.Clasificacion;
-import entity.Disposicion;
+import dao.UnidadDao;
+import entity.Unidad;
 
 /**
- * Servlet implementation class ServletDisposicion
+ * Servlet implementation class ServletUnidad
  */
-@WebServlet("/ServletDisposicion")
-public class ServletDisposicion extends HttpServlet {
+@WebServlet("/ServletUnidad")
+public class ServletUnidad extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletDisposicion() {
+	public ServletUnidad() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,8 +44,8 @@ public class ServletDisposicion extends HttpServlet {
 
 			try {
 
-				DisposicionDao oDDao = new DisposicionDao();
-				List<Disposicion> listado = oDDao.Listar();
+				UnidadDao oUDao = new UnidadDao();
+				List<Unidad> listado = oUDao.Listar();
 
 				String json = new Gson().toJson(listado);
 

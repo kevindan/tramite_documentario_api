@@ -11,22 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import dao.ClasificacionDao;
 import dao.DisposicionDao;
-import entity.Clasificacion;
+import dao.SeccionDao;
 import entity.Disposicion;
+import entity.Seccion;
 
 /**
- * Servlet implementation class ServletDisposicion
+ * Servlet implementation class ServletSeccion
  */
-@WebServlet("/ServletDisposicion")
-public class ServletDisposicion extends HttpServlet {
+@WebServlet("/ServletSeccion")
+public class ServletSeccion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletDisposicion() {
+	public ServletSeccion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,6 +37,7 @@ public class ServletDisposicion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setContentType("text/html; charset=utf-8");
 
 		// PrintWriter out = response.getWriter();
@@ -47,8 +48,8 @@ public class ServletDisposicion extends HttpServlet {
 
 			try {
 
-				DisposicionDao oDDao = new DisposicionDao();
-				List<Disposicion> listado = oDDao.Listar();
+				SeccionDao oSDao = new SeccionDao();
+				List<Seccion> listado = oSDao.Listar();
 
 				String json = new Gson().toJson(listado);
 

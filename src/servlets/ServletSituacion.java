@@ -11,22 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import dao.ClasificacionDao;
 import dao.DisposicionDao;
-import entity.Clasificacion;
+import dao.SituacionDao;
 import entity.Disposicion;
+import entity.Situacion;
 
 /**
- * Servlet implementation class ServletDisposicion
+ * Servlet implementation class ServletSituacion
  */
-@WebServlet("/ServletDisposicion")
-public class ServletDisposicion extends HttpServlet {
+@WebServlet("/ServletSituacion")
+public class ServletSituacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletDisposicion() {
+	public ServletSituacion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,8 +47,8 @@ public class ServletDisposicion extends HttpServlet {
 
 			try {
 
-				DisposicionDao oDDao = new DisposicionDao();
-				List<Disposicion> listado = oDDao.Listar();
+				SituacionDao oSDao = new SituacionDao();
+				List<Situacion> listado = oSDao.Listar();
 
 				String json = new Gson().toJson(listado);
 
