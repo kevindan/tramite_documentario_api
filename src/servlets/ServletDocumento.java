@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import dao.DocumentoDao;
 import entity.Documento;
+import entity.RespuestaDoc;
 
 /**
  * Servlet implementation class ServletDocumento
@@ -90,7 +91,7 @@ public class ServletDocumento extends HttpServlet {
 				d.setSeccion_id_destino(seccion_id_destino);
 				d.setClasificacion_id(clasificacion_id);
 				d.setUrl_archivo(url_archivo);
-				d.setObservacion(observacion);
+				// d.setObservacion(observacion);
 
 				/*
 				 * 
@@ -106,11 +107,23 @@ public class ServletDocumento extends HttpServlet {
 
 				doc = oDao.Grabar(d);
 
-				out.println("Documento Generado : " + doc.getDocumento_id());
+				RespuestaDoc resp = new RespuestaDoc(1, doc.getDocumento_id());
+
+				String json = new Gson().toJson(resp);
+
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 
 			} catch (Exception e) {
 
-				out.println(e);
+				RespuestaDoc resp = new RespuestaDoc(0, null);
+
+				String json = new Gson().toJson(resp);
+
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 
 				System.out.print(e);
 			}
