@@ -47,7 +47,7 @@ public class ServletArchivo extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		String nombre = request.getParameter("nombre");
+		String nombre = "name.pdf";
 		Part archivo = request.getPart("archivo");
 		InputStream is = archivo.getInputStream();
 		File f = new File("/WebContent/intranet/uploads" + nombre);
