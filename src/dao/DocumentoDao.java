@@ -14,7 +14,7 @@ import interfaces.Intermetodos;
 public class DocumentoDao implements Intermetodos<Documento> {
 
 	@Override
-	public void Grabar(Documento o) throws Exception {
+	public Documento Grabar(Documento o) throws Exception {
 		Connection cn = null;
 		try {
 			cn = DataAccess.getConnection();
@@ -95,6 +95,8 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				cn.close();
 			}
 		}
+
+		return o;
 	}
 
 	@Override
@@ -176,9 +178,12 @@ public class DocumentoDao implements Intermetodos<Documento> {
 					+ " seccion_id_destino,clasificacion_id,url_archivo,observacion,anulado,estado from documento "
 					+ " where documento_id = ? estado = 1 and anulado = 0 ";
 			// crear statement
-			Statement stm = cn.createStatement();
+			PreparedStatement pstm = cn.prepareStatement(sql);
+
+			pstm.setString(1, o.getDocumento_id());
 			// ejecutar comando y obtener resultados
-			ResultSet rs = stm.executeQuery(sql);
+			ResultSet rs = pstm.executeQuery();
+
 			while (rs.next()) {
 				// Documento d = new Documento();
 				// asignar valores al objeto d
@@ -196,7 +201,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 			}
 			// cerrar cursor
 			rs.close();
-			stm.close();
+			pstm.close();
 		} catch (Exception e) {
 			throw e;
 		} finally {

@@ -48,16 +48,15 @@ public class ServletArchivo extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String nombre = "name.pdf";
-		Part archivo = request.getPart("archivo");
+		Part archivo = request.getPart("file");
 		InputStream is = archivo.getInputStream();
-		File f = new File("/WebContent/intranet/uploads" + nombre);
+		File f = new File("./WebContent/intranet/uploads/" + nombre);
 		FileOutputStream ous = new FileOutputStream(f);
 		int dato = is.read();
 
 		while (dato != -1) {
 			ous.write(dato);
 			dato = is.read();
-
 		}
 		ous.close();
 		is.close();

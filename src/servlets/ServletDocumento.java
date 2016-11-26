@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import entity.Documento;
  * Servlet implementation class ServletDocumento
  */
 @WebServlet("/ServletDocumento")
+@MultipartConfig
 public class ServletDocumento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -90,17 +92,22 @@ public class ServletDocumento extends HttpServlet {
 				d.setUrl_archivo(url_archivo);
 				d.setObservacion(observacion);
 
-				String json = new Gson().toJson(d);
-
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(json);
-
 				/*
-				 * oDao = new DocumentoDao();
 				 * 
-				 * oDao.Grabar(d);
+				 * String json = new Gson().toJson(d);
+				 * 
+				 * response.setContentType("application/json");
+				 * response.setCharacterEncoding("UTF-8");
+				 * response.getWriter().write(json);
 				 */
+
+				oDao = new DocumentoDao();
+				Documento doc = new Documento();
+
+				doc = oDao.Grabar(d);
+
+				out.println("Documento Generado : " + doc.getDocumento_id());
+
 			} catch (Exception e) {
 
 				out.println(e);

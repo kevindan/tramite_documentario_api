@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Intermetodos<T> {
 
-	public abstract void Grabar(T o) throws Exception;
+	public abstract T Grabar(T o) throws Exception;
 
 	public abstract void Eliminar(T o) throws Exception;
 

@@ -138,11 +138,11 @@ public class Documento {
 	}
 
 	public int getClasificacion_id() {
-		return anulado;
+		return clasificacion_id;
 	}
 
 	public void setClasificacion_id(int clasificacion_id) {
-		this.anulado = anulado;
+		this.clasificacion_id = clasificacion_id;
 	}
 
 	public int getEstado() {
