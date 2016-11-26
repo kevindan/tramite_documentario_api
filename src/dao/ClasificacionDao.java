@@ -14,8 +14,9 @@ import interfaces.Intermetodos;
 public class ClasificacionDao implements Intermetodos<Clasificacion> {
 
 	@Override
-	public void Grabar(Clasificacion o) throws Exception {
+	public Clasificacion Grabar(Clasificacion o) throws Exception {
 		// TODO Auto-generated method stub
+		return null;
 
 	}
 

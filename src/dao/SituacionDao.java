@@ -13,9 +13,9 @@ import interfaces.Intermetodos;
 public class SituacionDao implements Intermetodos<Situacion> {
 
 	@Override
-	public void Grabar(Situacion o) throws Exception {
+	public Situacion Grabar(Situacion o) throws Exception {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

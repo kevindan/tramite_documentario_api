@@ -14,8 +14,10 @@ import interfaces.Intermetodos;
 public class DisposicionDao implements Intermetodos<Disposicion> {
 
 	@Override
-	public void Grabar(Disposicion o) throws Exception {
+	public Disposicion Grabar(Disposicion o) throws Exception {
 		// TODO Auto-generated method stub
+
+		return null;
 
 	}
 

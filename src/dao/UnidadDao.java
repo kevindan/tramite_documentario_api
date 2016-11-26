@@ -14,9 +14,9 @@ import interfaces.Intermetodos;
 public class UnidadDao implements Intermetodos<Unidad> {
 
 	@Override
-	public void Grabar(Unidad o) throws Exception {
+	public Unidad Grabar(Unidad o) throws Exception {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

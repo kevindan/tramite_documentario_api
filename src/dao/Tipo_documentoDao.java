@@ -13,9 +13,9 @@ import interfaces.Intermetodos;
 public class Tipo_documentoDao implements Intermetodos<Tipo_documento> {
 
 	@Override
-	public void Grabar(Tipo_documento o) throws Exception {
+	public Tipo_documento Grabar(Tipo_documento o) throws Exception {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override

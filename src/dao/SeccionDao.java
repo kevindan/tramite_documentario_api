@@ -13,8 +13,9 @@ import interfaces.Intermetodos;
 public class SeccionDao implements Intermetodos<Seccion> {
 
 	@Override
-	public void Grabar(Seccion o) throws Exception {
+	public Seccion Grabar(Seccion o) throws Exception {
 		// TODO Auto-generated method stub
+		return null;
 
 	}
 
