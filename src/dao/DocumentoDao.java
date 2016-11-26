@@ -60,7 +60,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 
 			String sql = "insert into documento(documento_id,asunto,documento_fecha,"
 					+ "tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
-					+ "seccion_id_destino,casificacion_id,url_archivo,observacion,anulado,estado)"
+					+ "seccion_id_destino,clasificacion_id,url_archivo,observacion,anulado,estado)"
 					+ " values (?,?,?,?,sysdate(),?,?,?,?,?,?,0,1) ";
 
 			PreparedStatement pstm = cn.prepareStatement(sql);
@@ -117,9 +117,11 @@ public class DocumentoDao implements Intermetodos<Documento> {
 			// conexion a la base de datos
 			cn = DataAccess.getConnection();
 			// comando sql
-			String sql = "select documento_id,asunto,documento_fecha,"
-					+ "tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
-					+ "seccion_id_desctino,observacion from documento where anulado = 0 and estado = 1 ";
+			String sql = " select documento_id,asunto,documento_fecha,"
+					+ " tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
+					+ " seccion_id_destino,clasificacion_id,url_archivo,observacion,anulado,estado from documento "
+					+ " where estado = 1 and anulado = 0 order by documento_id asc";
+
 			// crear statement
 			Statement stm = cn.createStatement();
 			// ejecutar comando y obtener resultados
@@ -128,13 +130,14 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				Documento d = new Documento();
 				// asignar valores al objeto d
 				d.setDocumento_id(rs.getString("documento_id"));
-				d.setAsunto(rs.getString("Asunto"));
+				d.setAsunto(rs.getString("asunto"));
 				d.setDocumento_fecha(rs.getString("documento_fecha"));
 				d.setTipo_documento_id(rs.getInt("tipo_documento_id"));
 				d.setFecha_registro(rs.getString("fecha_registro"));
 				d.setDocumento_numero(rs.getString("documento_numero"));
 				d.setUnidad_id_origen(rs.getInt("unidad_id_origen"));
 				d.setSeccion_id_destino(rs.getInt("seccion_id_destino"));
+				d.setClasificacion_id(rs.getInt("clasificacion_id"));
 				d.setObservacion(rs.getString("observacion"));
 
 				lista.add(d);
@@ -168,9 +171,10 @@ public class DocumentoDao implements Intermetodos<Documento> {
 			// conexion a la base de datos
 			cn = DataAccess.getConnection();
 			// comando sql
-			String sql = "select documento_id,asunto,documento_fecha,"
-					+ "tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
-					+ "seccion_id_desctino,observacion from documento where anulado = 0 and estado = 1 ";
+			String sql = " select documento_id,asunto,documento_fecha, "
+					+ " tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen, "
+					+ " seccion_id_destino,clasificacion_id,url_archivo,observacion,anulado,estado from documento "
+					+ " where documento_id = ? estado = 1 and anulado = 0 ";
 			// crear statement
 			Statement stm = cn.createStatement();
 			// ejecutar comando y obtener resultados

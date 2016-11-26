@@ -39,8 +39,8 @@ public class ClasificacionDao implements Intermetodos<Clasificacion> {
 			// conexion a la base de datos
 			cn = DataAccess.getConnection();
 			// comando sql
-			String sql = "select casificacion_id,clasificacion from clasificacion "
-					+ " where estado = 1  order by casificacion_id asc";
+			String sql = "select clasificacion_id,clasificacion from clasificacion "
+					+ " where estado = 1  order by clasificacion_id asc";
 			// crear statement
 			Statement stm = cn.createStatement();
 			// ejecutar comando y obtener resultados
@@ -48,7 +48,7 @@ public class ClasificacionDao implements Intermetodos<Clasificacion> {
 			while (rs.next()) {
 				Clasificacion d = new Clasificacion();
 				// asignar valores al objeto d
-				d.setClasificacion_id(rs.getInt("casificacion_id"));
+				d.setClasificacion_id(rs.getInt("clasificacion_id"));
 				d.setClasificacion(rs.getString("clasificacion"));
 
 				lista.add(d);
