@@ -60,8 +60,8 @@ public class DocumentoDao implements Intermetodos<Documento> {
 
 			String sql = "insert into documento(documento_id,asunto,documento_fecha,"
 					+ "tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
-					+ "seccion_id_desctino,accion_id,url_archivo,observacion,anulado,estado)"
-					+ " values (?,?,?,?,sysdate(),?,?,?,?,?,0,1) ";
+					+ "seccion_id_destino,casificacion_id,url_archivo,observacion,anulado,estado)"
+					+ " values (?,?,?,?,sysdate(),?,?,?,?,?,?,0,1) ";
 
 			PreparedStatement pstm = cn.prepareStatement(sql);
 
@@ -72,7 +72,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 			pstm.setString(5, o.getDocumento_numero());
 			pstm.setInt(6, o.getUnidad_id_origen());
 			pstm.setInt(7, o.getSeccion_id_destino());
-			pstm.setInt(8, o.getAccion_id());
+			pstm.setInt(8, o.getClasificacion_id());
 			pstm.setString(9, o.getUrl_archivo());
 			pstm.setString(10, o.getObservacion());
 
@@ -162,8 +162,47 @@ public class DocumentoDao implements Intermetodos<Documento> {
 
 	@Override
 	public Documento Buscar(Documento o) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Connection cn = null;
+		Documento d = new Documento();
+		try {
+			// conexion a la base de datos
+			cn = DataAccess.getConnection();
+			// comando sql
+			String sql = "select documento_id,asunto,documento_fecha,"
+					+ "tipo_documento_id,fecha_registro,documento_numero,unidad_id_origen,"
+					+ "seccion_id_desctino,observacion from documento where anulado = 0 and estado = 1 ";
+			// crear statement
+			Statement stm = cn.createStatement();
+			// ejecutar comando y obtener resultados
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				// Documento d = new Documento();
+				// asignar valores al objeto d
+				d.setDocumento_id(rs.getString("documento_id"));
+				d.setAsunto(rs.getString("Asunto"));
+				d.setDocumento_fecha(rs.getString("documento_fecha"));
+				d.setTipo_documento_id(rs.getInt("tipo_documento_id"));
+				d.setFecha_registro(rs.getString("fecha_registro"));
+				d.setDocumento_numero(rs.getString("documento_numero"));
+				d.setUnidad_id_origen(rs.getInt("unidad_id_origen"));
+				d.setSeccion_id_destino(rs.getInt("seccion_id_destino"));
+				d.setObservacion(rs.getString("observacion"));
+
+				// lista.add(d);
+			}
+			// cerrar cursor
+			rs.close();
+			stm.close();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
+		return d;
+
 	}
 
 }

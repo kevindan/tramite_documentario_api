@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import dao.DocumentoDao;
 import entity.Documento;
 
@@ -55,7 +57,7 @@ public class ServletDocumento extends HttpServlet {
 		String documento_numero;
 		int unidad_id_origen = 0;
 		int seccion_id_destino = 0;
-		int accion_id = 0;
+		int clasificacion_id = 0;
 		String url_archivo;
 		String observacion;
 
@@ -70,11 +72,12 @@ public class ServletDocumento extends HttpServlet {
 			documento_numero = request.getParameter("documento_numero");
 			unidad_id_origen = Integer.parseInt(request.getParameter("unidad_id_origen"));
 			seccion_id_destino = Integer.parseInt(request.getParameter("seccion_id_destino"));
-			accion_id = Integer.parseInt(request.getParameter("accion_id"));
+			clasificacion_id = Integer.parseInt(request.getParameter("clasificacion_id"));
 			url_archivo = request.getParameter("url_archivo");
 			observacion = request.getParameter("observacion");
 
 			try {
+
 				d = new Documento();
 
 				d.setAsunto(asunto);
@@ -83,16 +86,26 @@ public class ServletDocumento extends HttpServlet {
 				d.setDocumento_numero(documento_numero);
 				d.setUnidad_id_origen(unidad_id_origen);
 				d.setSeccion_id_destino(seccion_id_destino);
-				d.setAccion_id(accion_id);
+				d.setClasificacion_id(clasificacion_id);
 				d.setUrl_archivo(url_archivo);
 				d.setObservacion(observacion);
 
-				oDao = new DocumentoDao();
+				String json = new Gson().toJson(d);
 
-				oDao.Grabar(d);
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 
+				/*
+				 * oDao = new DocumentoDao();
+				 * 
+				 * oDao.Grabar(d);
+				 */
 			} catch (Exception e) {
-				System.out.println(e);
+
+				out.println(e);
+
+				System.out.print(e);
 			}
 
 		} else if (opcion.equals("act")) {

@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -71,8 +72,45 @@ public class UnidadDao implements Intermetodos<Unidad> {
 
 	@Override
 	public List<Unidad> Filtrar(Unidad o) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Connection cn = null;
+		List<Unidad> lista = new ArrayList<Unidad>();
+		try {
+			// conexion a la base de datos
+			cn = DataAccess.getConnection();
+			// comando sql
+			String sql = "select unidad_id, unidad_id_interno, unidad, unidad_gguu, unidad_nucleo from unidad "
+					+ " where unidad like ? and estado = 1 limit 8";
+			// crear statement
+			PreparedStatement pstm = cn.prepareStatement(sql);
+
+			pstm.setString(1, "%" + o.getUnidad() + "%");
+			// ejecutar comando y obtener resultados
+			ResultSet rs = pstm.executeQuery();
+
+			while (rs.next()) {
+				Unidad d = new Unidad();
+				// asignar valores al objeto d
+				d.setUnidad_id(rs.getInt("unidad_id"));
+				d.setUnidad_id_interno(rs.getString("unidad_id_interno"));
+				d.setUnidad(rs.getString("unidad"));
+				d.setUnidad_gguu(rs.getString("unidad_gguu"));
+				d.setUnidad_nucleo(rs.getString("unidad_nucleo"));
+
+				lista.add(d);
+			}
+			// cerrar cursor
+			rs.close();
+			pstm.close();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
+		return lista;
+
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package entity;
 
 public class Documento {
-	 
+
 	private String documento_id;
 	private String asunto;
 	private String documento_fecha;
@@ -11,14 +11,15 @@ public class Documento {
 	private int unidad_id_origen;
 	private int seccion_id_destino;
 	private int accion_id;
+	private int clasificacion_id;
 	private String url_archivo;
 	private String observacion;
-	private int anulado;	
+	private int anulado;
 	private int estado;
-	
+
 	public Documento(String documento_id, String asunto, String documento_fecha, int tipo_documento_id,
-			String fecha_registro, String documento_numero, int unidad_id_origen, int seccion_id_destino, int accion_id,
-			String url_archivo, String observacion, int anulado, int estado) {
+			String fecha_registro, String documento_numero, int unidad_id_origen, int clasificacion_id,
+			int seccion_id_destino, int accion_id, String url_archivo, String observacion, int anulado, int estado) {
 		super();
 		this.documento_id = documento_id;
 		this.asunto = asunto;
@@ -29,14 +30,15 @@ public class Documento {
 		this.unidad_id_origen = unidad_id_origen;
 		this.seccion_id_destino = seccion_id_destino;
 		this.accion_id = accion_id;
+		this.clasificacion_id = clasificacion_id;
 		this.url_archivo = url_archivo;
 		this.observacion = observacion;
 		this.anulado = anulado;
 		this.estado = estado;
 	}
-	
-	public Documento (){
-		
+
+	public Documento() {
+
 	}
 
 	public String getDocumento_id() {
@@ -135,6 +137,14 @@ public class Documento {
 		this.anulado = anulado;
 	}
 
+	public int getClasificacion_id() {
+		return anulado;
+	}
+
+	public void setClasificacion_id(int clasificacion_id) {
+		this.anulado = anulado;
+	}
+
 	public int getEstado() {
 		return estado;
 	}
@@ -142,9 +152,5 @@ public class Documento {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	
-	
-	
 
 }

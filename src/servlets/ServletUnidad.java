@@ -58,6 +58,28 @@ public class ServletUnidad extends HttpServlet {
 			}
 
 		}
+		if (opcion.equals("filt")) {
+
+			String criterio = request.getParameter("filtro");
+
+			try {
+
+				UnidadDao oUDao = new UnidadDao();
+				Unidad u = new Unidad();
+				u.setUnidad(criterio);
+				List<Unidad> listado = oUDao.Filtrar(u);
+
+				String json = new Gson().toJson(listado);
+
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+
+		}
 
 	}
 
