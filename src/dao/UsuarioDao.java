@@ -68,16 +68,12 @@ public class UsuarioDao implements Intermetodos<Usuario> {
 
 			if (rs.next()) {
 
-				while (rs.next()) {
-					// u.setUsuario_id(rs.getInt("usuario_id"));
-					// u.setEstado(rs.getInt("estado"));
-					u.setUsuario_id(rs.getInt("usuario_id"));
-					u.setUsuario(rs.getString("usuario"));
+				u.setUsuario_id(rs.getInt("usuario_id"));
+				u.setUsuario(rs.getString("usuario"));
 
-					ur.setEstado(1);
-					ur.setUsuario(u);
+				ur.setEstado(1);
+				ur.setUsuario(u);
 
-				}
 			} else {
 				ur.setEstado(0);
 				ur.setUsuario(null);
