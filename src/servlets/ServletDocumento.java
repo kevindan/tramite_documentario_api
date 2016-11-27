@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,6 +16,7 @@ import com.google.gson.Gson;
 import dao.DocumentoDao;
 import entity.Documento;
 import entity.RespuestaDoc;
+import entity.VistaDocumento;
 
 /**
  * Servlet implementation class ServletDocumento
@@ -131,6 +133,36 @@ public class ServletDocumento extends HttpServlet {
 		} else if (opcion.equals("act")) {
 
 		} else if (opcion.equals("elim")) {
+
+		} else if (opcion.equals("list")) {
+
+			int pag = Integer.parseInt(request.getParameter("pagina"));
+			int limite = Integer.parseInt(request.getParameter("limite"));
+			int bandera = Integer.parseInt(request.getParameter("bandera"));
+			String desde = request.getParameter("desde");
+			String hasta = request.getParameter("hasta");
+			String documento_id = request.getParameter("numero_registro");
+			int unidad_origen = Integer.parseInt(request.getParameter("unidad_origen"));
+			int tipo_documento = Integer.parseInt(request.getParameter("tipo_documento"));
+
+			int estado = Integer.parseInt(request.getParameter("estado"));
+			int destino = Integer.parseInt(request.getParameter("destino"));
+
+			try {
+
+				oDao = new DocumentoDao();
+
+				List<VistaDocumento> lista = oDao.ListarDocumento(pag, limite, bandera, desde, hasta, documento_id,
+						unidad_origen, tipo_documento, estado, destino);
+
+				String json = new Gson().toJson(lista);
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 
