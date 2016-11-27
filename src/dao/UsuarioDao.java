@@ -70,11 +70,11 @@ public class UsuarioDao implements Intermetodos<Usuario> {
 
 				while (rs.next()) {
 					// u.setUsuario_id(rs.getInt("usuario_id"));
-					u.setEstado(rs.getInt("estado"));
+					// u.setEstado(rs.getInt("estado"));
 					u.setUsuario_id(rs.getInt("usuario_id"));
 					u.setUsuario(rs.getString("usuario"));
 
-					ur.setEstado(u.getEstado());
+					ur.setEstado(1);
 					ur.setUsuario(u);
 
 				}
