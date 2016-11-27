@@ -40,8 +40,59 @@ public class ServletDocumento extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		String opcion = request.getParameter("opcion");
+
+		String asunto;
+		String documento_fecha;
+		int tipo_documento_id = 0;
+		String documento_numero;
+		int unidad_id_origen = 0;
+		int seccion_id_destino = 0;
+		int clasificacion_id = 0;
+		String url_archivo;
+		String observacion;
+
+		Documento d;
+		DocumentoDao oDao;
+
+		if (opcion.equals("list")) {
+
+			int pag = Integer.parseInt(request.getParameter("pagina"));
+			int limite = Integer.parseInt(request.getParameter("limite"));
+			int bandera = Integer.parseInt(request.getParameter("bandera"));
+			String desde = request.getParameter("desde");
+			String hasta = request.getParameter("hasta");
+			String numero_registro = request.getParameter("numero_registro");
+			int unidad_origen = Integer.parseInt(request.getParameter("unidad_origen"));
+			int tipo_documento = Integer.parseInt(request.getParameter("tipo_documento"));
+
+			int estado = Integer.parseInt(request.getParameter("estado"));
+			int destino = Integer.parseInt(request.getParameter("destino"));
+
+			try {
+
+				oDao = new DocumentoDao();
+
+				List<VistaDocumento> lista = oDao.ListarDocumento(pag, limite, bandera, desde, hasta, numero_registro,
+						unidad_origen, tipo_documento, estado, destino);
+
+				String json = new Gson().toJson(lista);
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
+
+//				out.println("Hello World !");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 
 	/**
