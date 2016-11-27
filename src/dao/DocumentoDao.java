@@ -272,9 +272,9 @@ public class DocumentoDao implements Intermetodos<Documento> {
 					ds.setFecha_registro(rs.getString("fecha_registro"));
 					ds.setDocumento_numero(rs.getString("documento_numero"));
 					ds.setUnidad(rs.getString("unidad"));
-					ds.setSeccion(rs.getString("seccion_id_destino"));
-					ds.setUrl_archivo(rs.getString("clasificacion_id"));
-					ds.setClasificacion(rs.getString("observacion"));
+					ds.setSeccion(rs.getString("seccion"));
+					ds.setUrl_archivo(rs.getString("url_archivo"));
+					ds.setClasificacion(rs.getString("clasificacion"));
 
 					String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 							+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -404,9 +404,9 @@ public class DocumentoDao implements Intermetodos<Documento> {
 					ds.setFecha_registro(rs.getString("fecha_registro"));
 					ds.setDocumento_numero(rs.getString("documento_numero"));
 					ds.setUnidad(rs.getString("unidad"));
-					ds.setSeccion(rs.getString("seccion_id_destino"));
-					ds.setUrl_archivo(rs.getString("clasificacion_id"));
-					ds.setClasificacion(rs.getString("observacion"));
+					ds.setSeccion(rs.getString("seccion"));
+					ds.setUrl_archivo(rs.getString("url_archivo"));
+					ds.setClasificacion(rs.getString("clasificacion"));
 
 					String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 							+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -536,9 +536,10 @@ public class DocumentoDao implements Intermetodos<Documento> {
 					ds.setFecha_registro(rs.getString("fecha_registro"));
 					ds.setDocumento_numero(rs.getString("documento_numero"));
 					ds.setUnidad(rs.getString("unidad"));
-					ds.setSeccion(rs.getString("seccion_id_destino"));
-					ds.setUrl_archivo(rs.getString("clasificacion_id"));
-					ds.setClasificacion(rs.getString("observacion"));
+					ds.setSeccion(rs.getString("seccion"));
+					ds.setUrl_archivo(rs.getString("url_archivo"));
+					ds.setClasificacion(rs.getString("clasificacion"));
+					// ds.set(rs.getString("observacion"));
 
 					String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 							+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -669,9 +670,9 @@ public class DocumentoDao implements Intermetodos<Documento> {
 					ds.setFecha_registro(rs.getString("fecha_registro"));
 					ds.setDocumento_numero(rs.getString("documento_numero"));
 					ds.setUnidad(rs.getString("unidad"));
-					ds.setSeccion(rs.getString("seccion_id_destino"));
-					ds.setUrl_archivo(rs.getString("clasificacion_id"));
-					ds.setClasificacion(rs.getString("observacion"));
+					ds.setSeccion(rs.getString("seccion"));
+					ds.setUrl_archivo(rs.getString("url_archivo"));
+					ds.setClasificacion(rs.getString("clasificacion"));
 
 					String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 							+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -802,9 +803,9 @@ public class DocumentoDao implements Intermetodos<Documento> {
 						ds.setFecha_registro(rs.getString("fecha_registro"));
 						ds.setDocumento_numero(rs.getString("documento_numero"));
 						ds.setUnidad(rs.getString("unidad"));
-						ds.setSeccion(rs.getString("seccion_id_destino"));
-						ds.setUrl_archivo(rs.getString("clasificacion_id"));
-						ds.setClasificacion(rs.getString("observacion"));
+						ds.setSeccion(rs.getString("seccion"));
+						ds.setUrl_archivo(rs.getString("url_archivo"));
+						ds.setClasificacion(rs.getString("clasificacion"));
 
 						String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 								+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -932,9 +933,9 @@ public class DocumentoDao implements Intermetodos<Documento> {
 						ds.setFecha_registro(rs.getString("fecha_registro"));
 						ds.setDocumento_numero(rs.getString("documento_numero"));
 						ds.setUnidad(rs.getString("unidad"));
-						ds.setSeccion(rs.getString("seccion_id_destino"));
-						ds.setUrl_archivo(rs.getString("clasificacion_id"));
-						ds.setClasificacion(rs.getString("observacion"));
+						ds.setSeccion(rs.getString("seccion"));
+						ds.setUrl_archivo(rs.getString("url_archivo"));
+						ds.setClasificacion(rs.getString("clasificacion"));
 
 						String sql2 = " select d.decreto_documento_id, d.documento_id, d.seccion_id, "
 								+ " s.seccion, d.fecha_decreto, d.estado from decreto_documento_seccion as d, "
@@ -996,7 +997,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 						ds.setListadisposicion(listadispocicion);
 
 						String sql4 = " select 	d.seguimiento_documento_id,	d.documento_id, d.situacion_id, "
-								+ " ds.situacion,d.fecha_seguimiento, d.estado from 	seguimiento_documento as d,"
+								+ " ds.situacion,d.fecha_seguimiento, d.estado from seguimiento_documento as d,"
 								+ " situacion as ds where d.situacion_id = ds.situacion_id and  d.documento_id = ? "
 								+ " order by situacion_documento_id asc ";
 
