@@ -245,7 +245,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				// conexion a la base de datos
 				cn = DataAccess.getConnection();
 				// comando sql
-				sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+				sql = " select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 						+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 						+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 						+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
@@ -377,7 +377,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				// conexion a la base de datos
 				cn = DataAccess.getConnection();
 				// comando sql
-				sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+				sql = " select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 						+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 						+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 						+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
@@ -509,7 +509,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				// conexion a la base de datos
 				cn = DataAccess.getConnection();
 				// comando sql
-				sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+				sql = "select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 						+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 						+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 						+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
@@ -641,7 +641,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				// conexion a la base de datos
 				cn = DataAccess.getConnection();
 				// comando sql
-				sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+				sql = " select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 						+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 						+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 						+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
@@ -775,7 +775,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 
 					cn = DataAccess.getConnection();
 					// comando sql
-					sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+					sql = " select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 							+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 							+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 							+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
@@ -905,7 +905,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 
 					cn = DataAccess.getConnection();
 					// comando sql
-					sql = " d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
+					sql = " select d.documento_id,d.asunto,d.documento_fecha,td.tipo_documento,d.fecha_registro, "
 							+ " d.documento_numero,u.unidad,s.seccion,d.url_archivo,c.clasificacion "
 							+ " from documento as d,tipo_documento as td,unidad as u,seccion as s,clasificacion as c "
 							+ "  where  d.tipo_documento_id = td.tipo_documento_id and d.unidad_id_origen = u.unidad_id and "
