@@ -7,6 +7,7 @@ import java.util.List;
 
 import database.DataAccess;
 import entity.Usuario;
+import entity.UsuarioRespuesta;
 import interfaces.Intermetodos;
 
 public class UsuarioDao implements Intermetodos<Usuario> {
@@ -47,12 +48,13 @@ public class UsuarioDao implements Intermetodos<Usuario> {
 		return null;
 	}
 
-	public Usuario Login(Usuario o) throws Exception {
+	public UsuarioRespuesta Login(Usuario o) throws Exception {
 
 		Connection cn = null;
 		// boolean sw;
 
 		Usuario u = new Usuario();
+		UsuarioRespuesta ur = new UsuarioRespuesta();
 
 		try {
 			cn = DataAccess.getConnection();
@@ -67,15 +69,19 @@ public class UsuarioDao implements Intermetodos<Usuario> {
 			if (rs.next()) {
 
 				while (rs.next()) {
-
 					// u.setUsuario_id(rs.getInt("usuario_id"));
-					u.setUsuario(rs.getString("usuario"));
 					u.setEstado(rs.getInt("estado"));
+					u.setUsuario_id(rs.getInt("usuario_id"));
+					u.setUsuario(rs.getString("usuario"));
+
+					ur.setEstado(u.getEstado());
+					ur.setUsuario(u);
 
 				}
 			} else {
+				ur.setEstado(0);
+				ur.setUsuario(null);
 
-				u = null;
 			}
 
 			rs.close();
@@ -90,7 +96,7 @@ public class UsuarioDao implements Intermetodos<Usuario> {
 				// TODO: handle exception
 			}
 		}
-		return u;
+		return ur;
 
 	}
 

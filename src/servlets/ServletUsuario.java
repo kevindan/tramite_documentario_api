@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import dao.UsuarioDao;
 import entity.Usuario;
+import entity.UsuarioRespuesta;
 
 /**
  * Servlet implementation class ServletUsuario
@@ -55,6 +56,7 @@ public class ServletUsuario extends HttpServlet {
 		String contrasena;
 
 		Usuario u;
+		UsuarioRespuesta uresp;
 		UsuarioDao uDao;
 
 		if (opcion.equals("login")) {
@@ -64,14 +66,15 @@ public class ServletUsuario extends HttpServlet {
 			try {
 
 				u = new Usuario();
+				uresp = new UsuarioRespuesta();
 				u.setUsuario(usuario);
 				u.setContrasena(contrasena);
 
 				uDao = new UsuarioDao();
 
-				Usuario usu = uDao.Login(u);
+				uresp = uDao.Login(u);
 
-				String json = new Gson().toJson(usu);
+				String json = new Gson().toJson(uresp);
 
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
