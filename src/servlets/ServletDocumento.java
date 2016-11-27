@@ -159,6 +159,8 @@ public class ServletDocumento extends HttpServlet {
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(json);
+				
+				out.println("Hello World !");
 
 			} catch (Exception e) {
 				e.printStackTrace();
