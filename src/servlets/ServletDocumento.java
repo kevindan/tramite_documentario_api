@@ -141,7 +141,7 @@ public class ServletDocumento extends HttpServlet {
 			int bandera = Integer.parseInt(request.getParameter("bandera"));
 			String desde = request.getParameter("desde");
 			String hasta = request.getParameter("hasta");
-			String documento_id = request.getParameter("numero_registro");
+			String numero_registro = request.getParameter("numero_registro");
 			int unidad_origen = Integer.parseInt(request.getParameter("unidad_origen"));
 			int tipo_documento = Integer.parseInt(request.getParameter("tipo_documento"));
 
@@ -152,7 +152,7 @@ public class ServletDocumento extends HttpServlet {
 
 				oDao = new DocumentoDao();
 
-				List<VistaDocumento> lista = oDao.ListarDocumento(pag, limite, bandera, desde, hasta, documento_id,
+				List<VistaDocumento> lista = oDao.ListarDocumento(pag, limite, bandera, desde, hasta, numero_registro,
 						unidad_origen, tipo_documento, estado, destino);
 
 				String json = new Gson().toJson(lista);

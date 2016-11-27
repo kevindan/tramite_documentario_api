@@ -223,7 +223,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 	}
 
 	public List<VistaDocumento> ListarDocumento(int pag, int limite, int opcion, String desde, String hasta,
-			String documento_id, int unidad_id_origen, int tipo_documento_id, int estado, int seccion_id_destino)
+			String numero_registro, int unidad_id_origen, int tipo_documento_id, int estado, int seccion_id_destino)
 			throws Exception {
 		Connection cn = null;
 		List<VistaDocumento> lista = new ArrayList<VistaDocumento>();
@@ -255,7 +255,7 @@ public class DocumentoDao implements Intermetodos<Documento> {
 				// crear statement
 				pstm = cn.prepareStatement(sql);
 
-				pstm.setString(1, documento_id);
+				pstm.setString(1, numero_registro);
 				pstm.setInt(2, limite);
 				pstm.setInt(3, pag);
 
