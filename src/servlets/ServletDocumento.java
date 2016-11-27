@@ -155,11 +155,15 @@ public class ServletDocumento extends HttpServlet {
 				List<VistaDocumento> lista = oDao.ListarDocumento(pag, limite, bandera, desde, hasta, numero_registro,
 						unidad_origen, tipo_documento, estado, destino);
 
-				String json = new Gson().toJson(lista);
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(json);
-				
+				/*
+				 * 
+				 * String json = new Gson().toJson(lista);
+				 * response.setContentType("application/json");
+				 * response.setCharacterEncoding("UTF-8");
+				 * response.getWriter().write(json);
+				 * 
+				 */
+
 				out.println("Hello World !");
 
 			} catch (Exception e) {
